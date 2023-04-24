@@ -1,5 +1,5 @@
 
-"""
+
 Code structure:
 1) Class for actuall disaster notification
     Everytime this file is run we need to the following things:
@@ -23,4 +23,3 @@ Code structure:
     Have a gpt powered chatbot that can answer quick questions about any natural disasters that are occuring 
     Integrate a feature in the site where the user can get a realtime list of natural disasters occuring
 
-"""
