@@ -1,0 +1,5 @@
+
+Word/Quote of the day
+
+
+User database to store the information
