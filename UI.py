@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 
-st.title('Add Users')
+st.title('Quotivate')
 
 name = st.text_input('Name')
 phone_number = st.text_input('Phone Number')

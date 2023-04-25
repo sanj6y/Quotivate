@@ -53,8 +53,8 @@ def sendQuote(json_list):
 json_list = [
     {
         "id": 0,
-        "name": "Yash",
-        "phone_number": "6504651133"
+        "name": "Pranav",
+        "phone_number": "6504395248"
     }
 ]
 
