@@ -37,3 +37,13 @@ def driver(json_list):
         
         # create msg
         sendOne(json_entry["phone_number"], message)
+
+json_list = [
+    {
+        "id": 0,
+        "name": "Yash",
+        "phone_number": "xxxxxxxxxx"
+    }
+]
+
+driver(json_list)
