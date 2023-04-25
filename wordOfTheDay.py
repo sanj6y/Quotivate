@@ -50,13 +50,16 @@ def sendQuote(json_list):
         # create msg
         sendOne(json_entry["phone_number"], message)
 
-json_list = [
-    {
-        "id": 0,
-        "name": "Pranav",
-        "phone_number": "6504395248"
-    }
-]
+# json_list = [
+#     {
+#         "id": 0,
+#         "name": "Pranav",
+#         "phone_number": "6504395248"
+#     }
+# ]
+
+json_list = requests.get('http://localhost:5000/get-users').json()
+
 
 sendWord(json_list)
 sendQuote(json_list)
