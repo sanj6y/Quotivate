@@ -26,7 +26,7 @@ def sendOne(pn, body):
     response = requests.request("POST", url, headers = headers, json = payload)
     return response
 
-def driver(json_list):
+def sendWord(json_list):
     for json_entry in json_list:
         response = requests.get("https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=c86lwn64t3vvmvd0y9qsofjce3ppgrvsvm4q5vwq49wmoadhw")
         word_of_the_day = response.json()["word"]
@@ -38,12 +38,22 @@ def driver(json_list):
         # create msg
         sendOne(json_entry["phone_number"], message)
 
+def sendQuote(json_list):
+    for json_entry in json_list:
+        response = requests.get("https://zenquotes.io/api/random")
+        quote = json.loads(response.text)
+        quote = quote[0]['q'] + " - " + quote[0]['a']
+        quote = '"' + quote.split(' -')[0] + '" -' + quote.split(' -')[-1]
+
+        message = "Hey " + json_entry["name"] + "!\nHere's your motivational quote: " + quote
+        
+        # create msg
+        sendOne(json_entry["phone_number"], message)
+
 json_list = [
     {
         "id": 0,
         "name": "Yash",
-        "phone_number": "xxxxxxxxxx"
+        "phone_number": "4083919768"
     }
 ]
-
-driver(json_list)
