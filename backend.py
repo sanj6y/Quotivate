@@ -6,14 +6,7 @@ import requests
 client = Courier(auth_token='Y2RmM2VhMjQtZGY5ZC00NGM3LWI3ZWEtOWQwN2NlOGJlOTk2', username='Github_74223798', base_url='https://api.courier.com')
 
 # list of jsons
-json_list = [
-    {
-        "id": 1,
-        "name": "Sanjay",
-        "phone_number": "408 391 9768"
-    },
-    # add more jsons here
-]
+json_list = (requests.get('http://localhost:5000/get-users')).json()
 
 # iterate over each entry in the list of jsons
 for json_entry in json_list:
