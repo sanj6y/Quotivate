@@ -1,5 +1,6 @@
 import requests
 import streamlit as st
+from wordOfTheDay import sendWord, sendQuote
 
 st.title('Add Users')
 

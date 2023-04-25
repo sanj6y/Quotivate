@@ -54,6 +54,9 @@ json_list = [
     {
         "id": 0,
         "name": "Yash",
-        "phone_number": "4083919768"
+        "phone_number": "6504651133"
     }
 ]
+
+sendWord(json_list)
+sendQuote(json_list)
