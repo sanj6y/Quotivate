@@ -24,9 +24,11 @@ def sendOne(pn, body):
     }
     
     response = requests.request("POST", url, headers = headers, json = payload)
+    print("--> Mesasge sent")
     return response
 
 def sendWord(json_list):
+    print(json_list)
     for json_entry in json_list:
         response = requests.get("https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=c86lwn64t3vvmvd0y9qsofjce3ppgrvsvm4q5vwq49wmoadhw")
         word_of_the_day = response.json()["word"]
@@ -34,7 +36,7 @@ def sendWord(json_list):
         definition = response.json()["definitions"][0]["text"]
 
         message = "Hey " + json_entry["name"] + "!\nYour word of the day is: " + word_of_the_day + ".\nDefinition: " + definition
-        
+            
         # create msg
         sendOne(json_entry["phone_number"], message)
 

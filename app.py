@@ -2,7 +2,7 @@ import sqlite3
 from flask import Flask, request, jsonify, g
 
 app = Flask(__name__)
-
+# testing desktop
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
@@ -10,21 +10,20 @@ def get_db():
     return db
 
 class UserDataBase:
-    def __init__(self, service_name):
-        self.service_name = service_name
+    def __init__(self):
         self.cursor = get_db().cursor()
-        self.cursor.execute(f'''CREATE TABLE IF NOT EXISTS {self.service_name}_users
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS users
                             (id INTEGER PRIMARY KEY,
                             name TEXT NOT NULL,
                             phone_number TEXT NOT NULL)''')
         get_db().commit()
 
     def insert_user(self, name, phone_number):
-        self.cursor.execute(f"INSERT INTO {self.service_name}_users (name, phone_number) VALUES (?, ?)", (name, phone_number))
+        self.cursor.execute(f"INSERT INTO users (name, phone_number) VALUES ('{name}', '{phone_number}')")
         get_db().commit()
 
     def get_all_users(self):
-        self.cursor.execute(f"SELECT * FROM {self.service_name}_users")
+        self.cursor.execute("SELECT * FROM users")
         rows = self.cursor.fetchall()
         return [{'id': row[0], 'name': row[1], 'phone_number': row[2]} for row in rows]
 
@@ -34,18 +33,18 @@ def close_db(error):
     if db is not None:
         db.close()
 
-@app.route('/add-user/<string:service_name>', methods=['POST'])
-def add_user(service_name):
+@app.route('/add-user', methods=['POST'])
+def add_user():
     data = request.get_json()
     name = data['Name']
     phone_number = data['Phone Number']
-    db = UserDataBase(service_name)
+    db = UserDataBase()
     db.insert_user(name, phone_number)
     return jsonify({'message': 'User added successfully'})
 
-@app.route('/get-users/<string:service_name>', methods=['GET'])
-def get_users(service_name):
-    db = UserDataBase(service_name)
+@app.route('/get-users', methods=['GET'])
+def get_users():
+    db = UserDataBase()
     users = db.get_all_users()
     return jsonify(users)
 
