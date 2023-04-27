@@ -1,4 +1,4 @@
-trycourier
+trycourier==4.4.0
 flask
 sqlite3
 streamlit
