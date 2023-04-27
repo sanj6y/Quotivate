@@ -14,6 +14,8 @@ if st.button('Sign me up!'):
         response = requests.post('http://localhost:5000/add-user', json=data)
         if response.ok:
             st.success('User added successfully')
+            sendWord([response.json()])
+            sendWord([response.json()])            
         else:
             st.error('Failed to add user')
     else:
@@ -32,8 +34,9 @@ if response.ok:
 now = datetime.datetime.now()
 eight_am = datetime.datetime.now().replace(hour=8, minute=0, second=0, microsecond=0)
 
-#if now == eight_am:
-sendWord(users)
-sendQuote(users)
+
+if now == eight_am:
+    sendWord(users)
+    sendQuote(users)
 
 st.write("Made by Yash Thapliyal and Sanjay Chandrasekar, 2023")
