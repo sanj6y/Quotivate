@@ -1,4 +1,6 @@
-#Quotivate
+#Quotivate#
+<img width="880" alt="Screen Shot 2023-04-26 at 4 22 33 PM" src="https://user-images.githubusercontent.com/123337877/234728154-2b84d327-2041-4412-b8c8-841de2385b72.png">
+
 "The Quotivate project is a web application that provides users with a daily dose of motivation in the form of a motivational quote and a word of the day. Users can sign up for the service by entering their name and phone number, and they will receive a daily text message with the quote and word of the day. The quotes and words are sourced from various APIs, and the messages are sent using the Courier API.
 
 The web application is built using Python and the Flask web framework. The front-end is developed using Streamlit, a Python library for building data apps. The data is stored using SQLite, a lightweight relational database management system.
